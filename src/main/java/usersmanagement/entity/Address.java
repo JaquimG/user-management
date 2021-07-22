@@ -1,29 +1,20 @@
 package usersmanagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Data
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Embeddable
 public class Address {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	private String country;
 	private String state;
@@ -33,9 +24,6 @@ public class Address {
 	private String number;
 	private String complement;
 	
-	@ManyToOne
-	@JoinColumn(name="idUser")
-	private User user;
 	
 	
 }
