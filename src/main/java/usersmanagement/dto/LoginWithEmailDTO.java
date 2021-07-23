@@ -7,28 +7,18 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import usersmanagement.entity.Address;
 
 
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class UserDTO implements Serializable{
+public class LoginWithEmailDTO implements Serializable{
 
-	private static final long serialVersionUID = 1;
-	
+	private static final long serialVersionUID = 1L;
 
-	private Long id;	
-	private String name;
 	private String email;
-	private Address address;
-	private Long pis;
-	private String cpf;
 	private String password;
-	
 
-	
-	
 }

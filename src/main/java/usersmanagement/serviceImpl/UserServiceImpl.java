@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import usersmanagement.dto.UserDTO;
@@ -20,6 +21,9 @@ public class UserServiceImpl implements CRUDService<UserDTO, User>{
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public List<UserDTO> listAll() {
@@ -39,6 +43,7 @@ public class UserServiceImpl implements CRUDService<UserDTO, User>{
 	@Override
 	public User saveOrUpdate(UserDTO userDTO) {
 		User savedUser = this.toUser(userDTO);
+		savedUser.setPassword(passwordEncoder.encode(savedUser.getPassword()));
 		savedUser = userRepository.save(savedUser);
 		return savedUser;
 	}
