@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,7 +44,9 @@ public class User implements UserDetails{
 	@Column
 	private String name;
 	
+	
 	@Column(unique=true)
+	@Email
 	private String email;
 	
 	@Embedded

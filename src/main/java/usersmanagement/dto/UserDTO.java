@@ -2,6 +2,8 @@ package usersmanagement.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

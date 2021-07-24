@@ -3,6 +3,8 @@ package usersmanagement.serviceImpl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,6 +43,7 @@ public class UserServiceImpl implements CRUDService<UserDTO, User>{
 	}
 
 	@Override
+	@Transactional
 	public User saveOrUpdate(UserDTO userDTO) {
 		User savedUser = this.toUser(userDTO);
 		savedUser.setPassword(passwordEncoder.encode(savedUser.getPassword()));

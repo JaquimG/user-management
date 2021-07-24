@@ -1,14 +1,11 @@
 package usersmanagement.serviceImpl;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -21,14 +18,6 @@ public class TokenService {
 	private String key = "HOYqeBksRl";
 
 	public String generateToken(Authentication authentication) {
-/*		return Jwts.builder()
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setSubject("Teste")
-				.setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-				.signWith(SignatureAlgorithm.HS256, key)
-				.compact();
-*/		
-//		User usuario = (User) authentication.getPrincipal();
 
 		return Jwts.builder().setIssuer("MinhaAplicacao")
                              .setSubject(authentication.getName())
@@ -36,6 +25,7 @@ public class TokenService {
 				             .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
                              .signWith(SignatureAlgorithm.HS256, key).compact();
 	}
+	
 	
 	public boolean isTokenValid(String token) {
 		try {
