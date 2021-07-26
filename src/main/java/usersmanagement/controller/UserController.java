@@ -52,8 +52,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/hello")
-	public String hello(){
-		return "hello world!";
+	public ResponseEntity<String> hello(){
+		return ResponseEntity.status(HttpStatus.OK).body("Hello World!");
 	}
 	
 	@DeleteMapping("/{id}")
