@@ -51,6 +51,11 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.FOUND).body(userService.getById(id));
 	}
 	
+	@GetMapping("/hello")
+	public String hello(){
+		return "hello world!";
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		userService.delete(id);
