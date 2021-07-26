@@ -43,7 +43,7 @@ public class UserController {
 	
 	@GetMapping("/findAll")
 	public ResponseEntity<?> findAll(){
-		return ResponseEntity.status(HttpStatus.FOUND).body(userService.listAll());
+		return ResponseEntity.status(HttpStatus.OK).body(userService.listAll());
 	}
 	
 	@GetMapping("/{id}")
