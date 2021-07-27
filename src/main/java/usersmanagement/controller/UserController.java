@@ -1,5 +1,7 @@
 package usersmanagement.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import usersmanagement.dto.LoginWithEmailDTO;
 import usersmanagement.dto.TokenDTO;
 import usersmanagement.dto.UserDTO;
-import usersmanagement.entity.User;
+import usersmanagement.dto.UserOutputDTO;
 import usersmanagement.serviceImpl.TokenService;
 import usersmanagement.serviceImpl.UserServiceImpl;
 
@@ -36,9 +38,9 @@ public class UserController {
 	
 	
 	@PostMapping("/create")
-	public ResponseEntity<?> createUser(@RequestBody UserDTO user){
-		User savedUser = userService.saveOrUpdate(user);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+	public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO user){
+		UserOutputDTO userOutput = userService.saveOrUpdate(user);
+		return ResponseEntity.status(HttpStatus.OK).body(userOutput);
 	}
 	
 	@GetMapping("/findAll")
@@ -48,12 +50,7 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id){
-		return ResponseEntity.status(HttpStatus.FOUND).body(userService.getById(id));
-	}
-	
-	@GetMapping("/hello")
-	public ResponseEntity<String> hello(){
-		return ResponseEntity.status(HttpStatus.OK).body("Hello World!");
+		return ResponseEntity.status(HttpStatus.OK).body(userService.getById(id));
 	}
 	
 	@DeleteMapping("/{id}")

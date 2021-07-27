@@ -2,13 +2,13 @@ package usersmanagement.service;
 
 import java.util.List;
 
-public interface CRUDService<T, ST> {
+public interface CRUDService<T, T2, T3> {
 
-    List<T> listAll();
+    List<T3> listAll();
 
-    T getById(Long id);
+    T3 getById(Long id);
 
-    ST saveOrUpdate(T domainObject);
+    T3 saveOrUpdate(T domainObject);
 
     void delete(Long id);
     

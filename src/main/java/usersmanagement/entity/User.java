@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,23 +38,27 @@ public class User implements UserDetails{
 	private Long id;
 	
 	@Column
+	@NotNull
 	private String name;
 	
-	
-	@Column(unique=true)
 	@Email
+	@NotNull
+	@Column(unique=true)
 	private String email;
 	
 	@Embedded
 	private Address address;
 	
+	@NotNull
 	@Column(unique=true)
 	private Long pis;
 	
+	@NotNull
 	@Column(unique=true)
 	private String cpf;
 	
 	@Column
+	@NotNull
 	private String password;
 
 	@Override
